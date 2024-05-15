@@ -9,6 +9,9 @@ import {
   Revenue,
 } from './definitions';
 import { formatCurrency } from './utils';
+import { unstable_noStore as noStore } from 'next/cache'; // 退出静态渲染
+
+// ！！！相当于route handler 最后一步controller, 处理数据库逻辑, 并返回数据库查询结果！！！
 
 export async function fetchRevenue() {
   // Add noStore() here to prevent the response from being cached.
@@ -32,11 +35,11 @@ export async function fetchRevenue() {
   }
 }
 
-export async function fetchLatestInvoices() {
+export async function fetchLatestInvoices() { // order by 倒序，最后5个
   try {
-    const data = await sql<LatestInvoiceRaw>`
+    const data = await sql<LatestInvoiceRaw>` 
       SELECT invoices.amount, customers.name, customers.image_url, customers.email, invoices.id
-      FROM invoices
+      FROM invoices 
       JOIN customers ON invoices.customer_id = customers.id
       ORDER BY invoices.date DESC
       LIMIT 5`;
@@ -64,7 +67,7 @@ export async function fetchCardData() {
          SUM(CASE WHEN status = 'pending' THEN amount ELSE 0 END) AS "pending"
          FROM invoices`;
 
-    const data = await Promise.all([
+    const data = await Promise.all([ //同时处理多个异步请求
       invoiceCountPromise,
       customerCountPromise,
       invoiceStatusPromise,
