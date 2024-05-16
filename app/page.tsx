@@ -8,10 +8,12 @@ import Image from 'next/image';
 export default function Page() {
   return (
     <main className="flex min-h-screen flex-col p-6">
+      {/* 整体上下两部分, 上为Logo, 下为左右两部分 */}
       <div className="flex h-20 shrink-0 items-end rounded-lg bg-blue-500 p-4 md:h-52">
         <AcmeLogo />
       </div>
       <div className="mt-4 flex grow flex-col gap-4 md:flex-row">
+        {/* 左右两部分，左为login, 右为图片 */}
         <div className="flex flex-col justify-center gap-6 rounded-lg bg-gray-50 px-6 py-10 md:w-2/5 md:px-20">
           {/* <div className="h-0 w-0 border-b-[30px] border-l-[20px] border-r-[20px] border-b-black border-l-transparent border-r-transparent" /> */}
           <div className={styles.shape} /> {/* same as above */}
@@ -20,7 +22,7 @@ export default function Page() {
           >
             Hendrix Next.js Demo{' '}
             <a href="https://nextjs.org/learn/" className="text-blue-500">
-              Next.js Learning
+              Next.js Official Doc.
             </a>
           </p>
           <Link
