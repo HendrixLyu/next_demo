@@ -90,7 +90,7 @@ export async function fetchCardData() {
   }
 }
 
-const ITEMS_PER_PAGE = 6;
+const ITEMS_PER_PAGE = 6; //默认返回一页6个Items
 export async function fetchFilteredInvoices(
   query: string,
   currentPage: number,
@@ -110,7 +110,7 @@ export async function fetchFilteredInvoices(
       FROM invoices
       JOIN customers ON invoices.customer_id = customers.id
       WHERE
-        customers.name ILIKE ${`%${query}%`} OR
+        customers.name ILIKE ${`%${query}%`} OR 
         customers.email ILIKE ${`%${query}%`} OR
         invoices.amount::text ILIKE ${`%${query}%`} OR
         invoices.date::text ILIKE ${`%${query}%`} OR
@@ -126,7 +126,7 @@ export async function fetchFilteredInvoices(
   }
 }
 
-export async function fetchInvoicesPages(query: string) {
+export async function fetchInvoicesPages(query: string) { // 数据库获取总页数
   try {
     const count = await sql`SELECT COUNT(*)
     FROM invoices
