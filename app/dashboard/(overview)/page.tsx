@@ -47,8 +47,7 @@ export default async function Page() {
       </div>
       <div className="mt-6 grid grid-cols-1 gap-6 md:grid-cols-4 lg:grid-cols-8">
         {/* <RevenueChart revenue={revenue} /> */}
-        {/* ↓↓↓<Suspense>组件↓↓↓ {Children}想要呈现的实际 UI。如果children在渲染时暂停，Suspense 边界将切换到渲染fallback。
-fallback：如果实际 UI 尚未完成加载，则呈现替代 UI */}
+        {/* ↓↓↓<Suspense>组件↓↓↓ {Children}想要呈现的实际 UI。如果children在渲染时暂停，Suspense 边界将切换到渲染fallback。fallback：如果实际 UI 尚未完成加载，则呈现替代 UI */}
         <Suspense fallback={<RevenueChartSkeleton />}>
           <RevenueChart />
         </Suspense>

@@ -29,6 +29,7 @@ export default async function Page({
         <Search placeholder="Placeholder Search invoices..." />
         <CreateInvoice />
       </div>
+{/* ↓↓↓<Suspense>组件↓↓↓ {Children}想要呈现的实际 UI。如果children在渲染时暂停，Suspense 边界将切换到渲染fallback。fallback：如果实际 UI 尚未完成加载，则呈现替代 UI */}
       <Suspense key={query + currentPage} fallback={<InvoicesTableSkeleton />}>
         <Table query={query} currentPage={currentPage} />
       </Suspense>

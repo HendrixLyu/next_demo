@@ -34,8 +34,8 @@ export async function createInvoice(formData: FormData) {
   console.log('input Form Data:', customerId, amount, status);
 }
 
-// 与CreateInvoice极其相似
 const UpdateInvoice = FormSchema.omit({ id: true, date: true });
+// ↑↑↑ 与CreateInvoice ↑↑↑极其相似，参数多一个id
 
 export async function updateInvoice(id: string, formData: FormData) {
   const { customerId, amount, status } = UpdateInvoice.parse({
